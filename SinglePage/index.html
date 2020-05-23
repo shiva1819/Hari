@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./fontawesome-free-5.13.0-web/css/all.min.css">
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: 'Titillium Web', sans-serif;
+        }
+        body{
+            background-color: ;
+        }
+
+        #MainWrap {
+            height: 100vh;
+        }
+
+        #sideBar {
+            width: 15%;
+            height: 100vh;
+            border-right: 1px solid #ccc;
+            float: left;
+            background: #2b336eeb;
+            color: #fff;
+        }
+
+        #sideBar h1 {
+            padding: 50px 0px 50px 0px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+        }
+
+        #sideBar ul {
+            list-style: none;
+            /* margin-top: 5px; */
+        }
+
+        #sideBar ul li {
+            /* text-align: center; */
+            border-bottom: 1px solid #ccc;
+            padding: 5px 0px 10px 0px;
+        }
+
+        #sideBar ul li a {
+            text-decoration: none;
+            color: #fff;
+            padding-left: 15px;
+        }
+        #sideBar ul li a i{
+            padding-left: 100px;
+            padding-top: 10px;
+            font-size: 25px;
+        }
+        .gal i{
+            padding-left: 85px !important;
+        }
+        .cont i{
+            padding-left: 85px !important;
+        }
+
+        #sideBar1 {
+            width: 85%;
+            height: 100vh;
+            overflow: auto;
+            float: left;            
+            padding: 10px;
+            text-align: center;
+            padding-top: 100px;            
+        }
+
+        .clear {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <main id="MainWrap">
+        <div id="sideBar">
+            <div class="logo">
+                <h1> SHIVA </h1>
+            </div>
+            <ul class="menu">
+                <li>
+                    <a href="#Home"> HOME <i class="fas fa-home"></i> </a>
+                </li>
+                <li>
+                    <a href="#About"> ABOUT <i class="fas fa-user-tie"></i></a>
+                </li>
+                <li>
+                    <a href="#Gallery" class="gal"> GALLERY <i class="fas fa-image"></i></a>
+                </li>
+                <li>
+                    <a href="#Contact" class="cont"> CONTACT <i class="fas fa-id-card"></i></a>
+                </li>
+            </ul>
+        </div>
+        <div id="sideBar1">
+            <div id="projection"></div>
+        </div>
+        <div class="clear"></div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+
+
+        $('#projection').load('./Pages/Home.html');
+
+
+        $('.menu li a').click(function () {            
+            $.ajax({
+                url: './Pages/' + $(this).attr('href').replace('#', '')+'.html',
+                success: function (data) {
+                    console.log(data)
+                    $('#projection').html(data);
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
